@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Design Studio, LLC - App & Web Development</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0A4A6E;
-            --primary-blue: #0A7DC2;
-            --dark-blue: #084563;
-            --accent: #FFC107;
-            --accent-2: #FFD54F;
-            --text: #FFFFFF;
-            --text-dim: #A8C5D9;
-            --surface: #0C5A7E;
-            --surface-elevated: #126892;
+            --primary: #4353FF;
+            --primary-dark: #3644CC;
+            --text-dark: #1A1A2E;
+            --text-gray: #6B7280;
+            --text-light: #9CA3AF;
+            --bg-white: #FFFFFF;
+            --bg-light: #F9FAFB;
+            --bg-card: #FFFFFF;
+            --border: #E5E7EB;
+            --border-light: #F3F4F6;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --gradient: linear-gradient(135deg, #4353FF 0%, #7C3AED 100%);
         }
 
         * {
@@ -25,51 +31,28 @@
         }
 
         body {
-            font-family: 'JetBrains Mono', monospace;
-            background: var(--primary);
-            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-white);
+            color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Animated background grid */
-        .bg-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 0;
-            animation: gridPulse 8s ease-in-out infinite;
-        }
-
-        @keyframes gridPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
-            position: relative;
-            z-index: 1;
         }
 
         /* Header */
         header {
-            padding: 2rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
+            padding: 1.25rem 0;
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(10, 74, 110, 0.95);
         }
 
         .header-content {
@@ -81,457 +64,506 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .logo-image {
-            width: 50px;
-            height: 50px;
-            transition: transform 0.3s;
-        }
-
-        .logo-image:hover {
-            transform: scale(1.1) rotate(5deg);
+            width: 40px;
+            height: 40px;
         }
 
         .logo {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-transform: uppercase;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
             letter-spacing: -0.02em;
-            position: relative;
-            display: inline-block;
-        }
-
-        .logo::after {
-            content: '_';
-            animation: blink 1s infinite;
-            color: var(--accent);
-        }
-
-        @keyframes blink {
-            0%, 49% { opacity: 1; }
-            50%, 100% { opacity: 0; }
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
+            align-items: center;
         }
 
         nav a {
-            color: var(--text);
+            color: var(--text-gray);
             text-decoration: none;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        nav a::before {
-            content: '//';
-            position: absolute;
-            left: -1.2rem;
-            opacity: 0;
-            color: var(--accent);
-            transition: opacity 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
         nav a:hover {
-            color: var(--accent);
+            color: var(--text-dark);
         }
 
-        nav a:hover::before {
-            opacity: 1;
+        .nav-cta {
+            background: var(--text-dark);
+            color: var(--bg-white) !important;
+            padding: 0.625rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary);
+            color: var(--bg-white) !important;
         }
 
         /* Hero Section */
         .hero {
-            padding: 8rem 0 6rem;
-            position: relative;
+            padding: 6rem 0 5rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
         }
 
-        .hero-content {
-            max-width: 900px;
-        }
-
-        .hero-eyebrow {
-            font-size: 0.9rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            color: var(--text-gray);
             margin-bottom: 1.5rem;
-            animation: slideInLeft 0.8s ease-out;
+            box-shadow: var(--shadow-sm);
         }
 
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .hero-badge span {
+            color: var(--primary);
+            font-weight: 600;
         }
 
         .hero h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
-            line-height: 0.95;
-            margin-bottom: 2rem;
-            color: var(--text);
-            animation: slideInUp 1s ease-out 0.2s both;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            letter-spacing: -0.03em;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 .accent {
-            color: var(--accent);
-            display: block;
+        .hero h1 .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
-            font-size: 1.1rem;
-            color: var(--text-dim);
+            font-size: 1.25rem;
+            color: var(--text-gray);
             max-width: 600px;
-            margin-bottom: 3rem;
-            line-height: 1.8;
-            animation: slideInUp 1s ease-out 0.4s both;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
         }
 
         .cta-group {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
+            justify-content: center;
             flex-wrap: wrap;
-            animation: slideInUp 1s ease-out 0.6s both;
         }
 
         .btn {
-            padding: 1rem 2.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            padding: 0.875rem 1.75rem;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
             text-decoration: none;
-            border: none;
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .btn-primary {
-            background: var(--accent);
-            color: #084563;
-            font-weight: 600;
+            background: var(--text-dark);
+            color: var(--bg-white);
+            border: none;
         }
 
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
+        .btn-primary:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
         .btn-secondary {
-            background: transparent;
-            color: var(--text);
-            border: 1px solid var(--primary-blue);
+            background: var(--bg-white);
+            color: var(--text-dark);
+            border: 1px solid var(--border);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--accent);
+            border-color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        /* Trusted By */
+        .trusted {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .trusted p {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+        }
+
+        .trusted-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        .trusted-logos span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-gray);
         }
 
         /* Services Section */
         .services {
-            padding: 8rem 0;
-            background: linear-gradient(180deg, transparent 0%, var(--surface) 50%, transparent 100%);
+            padding: 6rem 0;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
         }
 
         .section-label {
-            font-size: 0.85rem;
-            color: var(--accent);
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
             text-transform: uppercase;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.1em;
             margin-bottom: 1rem;
         }
 
         .section-header h2 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 4vw, 2.75rem);
             font-weight: 800;
-            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
         }
 
         .section-header p {
-            color: var(--text-dim);
+            color: var(--text-gray);
             max-width: 600px;
             margin: 0 auto;
-            font-size: 1.05rem;
+            font-size: 1.125rem;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
+            gap: 1.5rem;
         }
 
         .service-card {
-            background: var(--surface-elevated);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 3rem 2.5rem;
-            position: relative;
-            transition: all 0.4s;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
         }
 
         .service-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
         }
 
         .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-            filter: drop-shadow(0 0 20px currentColor);
+            width: 48px;
+            height: 48px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .service-card h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text);
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
         }
 
         .service-card p {
-            color: var(--text-dim);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
+            color: var(--text-gray);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
         }
 
         .service-card ul {
             list-style: none;
-            color: var(--text-dim);
-            font-size: 0.9rem;
         }
 
         .service-card li {
-            padding: 0.4rem 0;
-            padding-left: 1.5rem;
-            position: relative;
+            padding: 0.375rem 0;
+            color: var(--text-gray);
+            font-size: 0.9375rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .service-card li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
+            content: '✓';
+            color: var(--primary);
+            font-weight: 600;
         }
 
         /* Portfolio Section */
         .portfolio {
-            padding: 8rem 0;
+            padding: 6rem 0;
+            background: var(--bg-light);
         }
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 1.5rem;
         }
 
         .portfolio-item {
-            background: var(--surface-elevated);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--bg-card);
+            border-radius: 16px;
             overflow: hidden;
-            transition: all 0.4s;
-            position: relative;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
         }
 
         .portfolio-item:hover {
-            border-color: var(--accent);
-            transform: scale(1.02);
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
         }
 
         .portfolio-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-elevated) 100%);
+            height: 220px;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--border) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 4rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .portfolio-content {
-            padding: 2rem;
-        }
-
-        .portfolio-content h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+            padding: 1.75rem;
         }
 
         .portfolio-type {
-            color: var(--accent);
-            font-size: 0.85rem;
+            display: inline-block;
+            background: var(--bg-light);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            padding: 0.375rem 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
         }
 
         .portfolio-content p {
-            color: var(--text-dim);
-            line-height: 1.7;
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 0.9375rem;
         }
 
         /* Tech Stack */
         .tech-stack {
-            padding: 8rem 0;
-            background: var(--surface);
+            padding: 6rem 0;
         }
 
         .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
         }
 
         .tech-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: var(--surface-elevated);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.2s;
         }
 
         .tech-item:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
         }
 
         .tech-item span {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            margin-top: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .tech-item p {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 0;
+            background: var(--text-dark);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 800;
+            color: var(--bg-white);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section p {
+            color: var(--text-light);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-section .btn-primary {
+            background: var(--bg-white);
+            color: var(--text-dark);
+        }
+
+        .cta-section .btn-primary:hover {
+            background: var(--primary);
+            color: var(--bg-white);
         }
 
         /* Contact Section */
         .contact {
-            padding: 8rem 0;
+            padding: 6rem 0;
+            background: var(--bg-light);
         }
 
         .contact-content {
             max-width: 800px;
-            margin: 4rem auto 0;
-            text-align: center;
+            margin: 0 auto;
         }
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
             margin-top: 3rem;
-            flex-wrap: wrap;
         }
 
-        .contact-item {
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
             text-align: center;
+            transition: all 0.3s;
         }
 
-        .contact-item span {
-            display: block;
-            color: var(--text-dim);
-            font-size: 0.85rem;
+        .contact-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-card-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--bg-light);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .contact-card h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-light);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
             margin-bottom: 0.5rem;
         }
 
-        .contact-item a {
-            color: var(--accent);
+        .contact-card a {
+            color: var(--text-dark);
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.2s;
         }
 
-        .contact-item a:hover {
-            color: var(--text);
+        .contact-card a:hover {
+            color: var(--primary);
         }
 
         /* Footer */
         footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding: 3rem 0;
+            border-top: 1px solid var(--border);
             text-align: center;
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        footer p {
-            margin-bottom: 0.5rem;
         }
 
         .footer-logo {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 1rem;
-            opacity: 0.7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .footer-logo span {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        footer p {
+            color: var(--text-light);
+            font-size: 0.875rem;
         }
 
         /* Responsive */
@@ -540,53 +572,46 @@
                 padding: 4rem 0 3rem;
             }
 
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
             .services-grid,
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
 
             nav ul {
-                gap: 1rem;
-                font-size: 0.75rem;
+                gap: 1.25rem;
             }
 
-            .logo-container {
-                flex-direction: column;
-                gap: 0.5rem;
-                align-items: flex-start;
+            nav a:not(.nav-cta) {
+                display: none;
             }
 
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .tech-grid {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-                gap: 1rem;
-            }
-
-            .contact-info {
-                flex-direction: column;
+            .trusted-logos {
                 gap: 2rem;
             }
+
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* Scroll reveal animation */
-        .reveal {
+        /* Animations */
+        .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
         }
 
-        .reveal.active {
+        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <div class="bg-grid"></div>
-
     <header>
         <div class="container">
             <div class="header-content">
@@ -597,9 +622,9 @@
                 <nav>
                     <ul>
                         <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#portfolio">Work</a></li>
                         <li><a href="#tech">Tech</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
                     </ul>
                 </nav>
             </div>
@@ -608,22 +633,37 @@
 
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-eyebrow">// Cloud Design Studio, LLC</div>
-                <h1>
-                    Building Digital
-                    <span class="accent">Experiences</span>
-                    That Matter
-                </h1>
-                <p>
-                    From innovative mobile apps to high-performance websites, we craft digital solutions 
-                    that combine cutting-edge technology with exceptional user experience. Your vision, 
-                    our expertise.
-                </p>
-                <div class="cta-group">
-                    <a href="#contact" class="btn btn-primary">Start Your Project</a>
-                    <a href="#portfolio" class="btn btn-secondary">View Our Work</a>
-                </div>
+            <div class="hero-badge">
+                <span>✨</span> Now accepting new projects for 2026
+            </div>
+            <h1>
+                Build <span class="gradient-text">digital experiences</span> that drive results
+            </h1>
+            <p>
+                From innovative mobile apps to high-performance websites, we craft digital solutions 
+                that combine cutting-edge technology with exceptional design.
+            </p>
+            <div class="cta-group">
+                <a href="#contact" class="btn btn-primary">
+                    Start Your Project
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.33337 8H12.6667M12.6667 8L8.00004 3.33333M12.6667 8L8.00004 12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="#portfolio" class="btn btn-secondary">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="trusted">
+        <div class="container">
+            <p>Trusted by businesses across industries</p>
+            <div class="trusted-logos">
+                <span>TechCorp</span>
+                <span>StartupX</span>
+                <span>FinanceHub</span>
+                <span>MediaPro</span>
+                <span>RetailPlus</span>
             </div>
         </div>
     </section>
@@ -632,85 +672,79 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-label">What We Do</div>
-                <h2>Our Services</h2>
+                <h2>Services that scale with you</h2>
                 <p>Comprehensive digital solutions tailored to your business needs, from concept to launch and beyond.</p>
             </div>
 
             <div class="services-grid">
-                <div class="service-card reveal">
+                <div class="service-card fade-in">
                     <div class="service-icon">📱</div>
                     <h3>Mobile App Development</h3>
-                    <p>Native iOS and cross-platform applications built with SwiftUI, React Native, and modern frameworks.</p>
+                    <p>Native iOS and cross-platform applications built with modern frameworks.</p>
                     <ul>
                         <li>iOS & Android apps</li>
                         <li>SwiftUI & React Native</li>
                         <li>Firebase integration</li>
-                        <li>AI/ML features</li>
                         <li>App Store optimization</li>
                     </ul>
                 </div>
 
-                <div class="service-card reveal">
+                <div class="service-card fade-in">
                     <div class="service-icon">💻</div>
                     <h3>Web Development</h3>
-                    <p>Responsive, SEO-optimized websites that drive results and provide exceptional user experiences.</p>
+                    <p>Responsive, SEO-optimized websites that drive results.</p>
                     <ul>
                         <li>Custom website design</li>
                         <li>E-commerce solutions</li>
                         <li>CMS implementation</li>
-                        <li>SEO optimization</li>
                         <li>Performance tuning</li>
                     </ul>
                 </div>
 
-                <div class="service-card reveal">
+                <div class="service-card fade-in">
                     <div class="service-icon">🎨</div>
                     <h3>UI/UX Design</h3>
-                    <p>Beautiful, intuitive interfaces that users love, backed by data-driven design decisions.</p>
+                    <p>Beautiful, intuitive interfaces backed by user research.</p>
                     <ul>
                         <li>User research & testing</li>
                         <li>Wireframing & prototyping</li>
-                        <li>Visual design systems</li>
-                        <li>Accessibility standards</li>
+                        <li>Design systems</li>
                         <li>Brand identity</li>
                     </ul>
                 </div>
 
-                <div class="service-card reveal">
+                <div class="service-card fade-in">
                     <div class="service-icon">🚀</div>
                     <h3>SaaS Development</h3>
-                    <p>Scalable software-as-a-service platforms with robust backends and seamless user experiences.</p>
+                    <p>Scalable software platforms with robust backends.</p>
                     <ul>
                         <li>Cloud infrastructure</li>
-                        <li>Database architecture</li>
                         <li>API development</li>
                         <li>Subscription systems</li>
                         <li>Analytics dashboards</li>
                     </ul>
                 </div>
 
-                <div class="service-card reveal">
+                <div class="service-card fade-in">
                     <div class="service-icon">🤖</div>
                     <h3>AI Integration</h3>
-                    <p>Leverage cutting-edge AI technologies to enhance your applications with intelligent features.</p>
+                    <p>Enhance your applications with intelligent features.</p>
                     <ul>
                         <li>Natural language processing</li>
                         <li>Computer vision</li>
-                        <li>Recommendation systems</li>
                         <li>Chatbots & assistants</li>
                         <li>Custom AI models</li>
                     </ul>
                 </div>
 
-                <div class="service-card reveal">
+                <div class="service-card fade-in">
                     <div class="service-icon">⚙️</div>
                     <h3>Consulting & Strategy</h3>
-                    <p>Expert guidance on technology decisions, architecture, and digital transformation initiatives.</p>
+                    <p>Expert guidance on technology and digital transformation.</p>
                     <ul>
                         <li>Technical audits</li>
                         <li>Architecture planning</li>
                         <li>Product strategy</li>
-                        <li>Team training</li>
                         <li>Code reviews</li>
                     </ul>
                 </div>
@@ -722,62 +756,44 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-label">Our Work</div>
-                <h2>Recent Projects</h2>
-                <p>Explore some of our latest work across mobile apps, web platforms, and custom solutions.</p>
+                <h2>Projects we're proud of</h2>
+                <p>Explore our latest work across mobile apps, web platforms, and custom solutions.</p>
             </div>
 
             <div class="portfolio-grid">
-                <div class="portfolio-item reveal">
+                <div class="portfolio-item fade-in">
                     <div class="portfolio-image">📊</div>
                     <div class="portfolio-content">
                         <div class="portfolio-type">Mobile App</div>
                         <h3>PollPulse</h3>
-                        <p>AI-powered daily opinion polling app featuring real-time analytics, 8 content categories, and automated question generation using cutting-edge AI technology.</p>
+                        <p>AI-powered daily opinion polling app featuring real-time analytics and automated question generation.</p>
                     </div>
                 </div>
 
-                <div class="portfolio-item reveal">
+                <div class="portfolio-item fade-in">
                     <div class="portfolio-image">💇</div>
                     <div class="portfolio-content">
                         <div class="portfolio-type">Mobile App</div>
                         <h3>WigOutApp</h3>
-                        <p>Revolutionary AI hairstyle try-on application with real-time face detection, extensive hairstyle library, and advanced AI image generation capabilities.</p>
+                        <p>AI hairstyle try-on application with real-time face detection and advanced image generation.</p>
                     </div>
                 </div>
 
-                <div class="portfolio-item reveal">
+                <div class="portfolio-item fade-in">
                     <div class="portfolio-image">🏠</div>
                     <div class="portfolio-content">
                         <div class="portfolio-type">Website</div>
                         <h3>Real Estate Platform</h3>
-                        <p>Comprehensive real estate website with SEO optimization, responsive design, Google Business integration, and lead generation systems.</p>
+                        <p>SEO-optimized real estate website with Google Business integration and lead generation.</p>
                     </div>
                 </div>
 
-                <div class="portfolio-item reveal">
-                    <div class="portfolio-image">🏗️</div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-type">Website</div>
-                        <h3>Service Business Site</h3>
-                        <p>Professional service website featuring project galleries, online booking, contact forms, and local SEO optimization for maximum visibility.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal">
+                <div class="portfolio-item fade-in">
                     <div class="portfolio-image">📈</div>
                     <div class="portfolio-content">
                         <div class="portfolio-type">SaaS Platform</div>
                         <h3>Operations Dashboard</h3>
-                        <p>Enterprise operations management platform with real-time analytics, team coordination tools, and performance tracking dashboards.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal">
-                    <div class="portfolio-image">🎯</div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-type">Custom Solution</div>
-                        <h3>Business Automation</h3>
-                        <p>Tailored automation solutions integrating AI, APIs, and workflow optimization to streamline business operations and increase efficiency.</p>
+                        <p>Enterprise operations platform with real-time analytics and performance tracking.</p>
                     </div>
                 </div>
             </div>
@@ -788,90 +804,58 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-label">Technologies</div>
-                <h2>Our Tech Stack</h2>
-                <p>We leverage modern, proven technologies to build reliable and scalable solutions.</p>
+                <h2>Built with modern tools</h2>
+                <p>We use proven technologies to build reliable and scalable solutions.</p>
             </div>
 
             <div class="tech-grid">
-                <div class="tech-item reveal">
-                    <div style="font-size: 3rem;">🍎</div>
-                    <span>SwiftUI</span>
-                </div>
-                <div class="tech-item reveal">
-                    <div style="font-size: 3rem;">⚛️</div>
-                    <span>React</span>
-                </div>
-                <div class="tech-item reveal">
-                    <div style="font-size: 3rem;">🔥</div>
-                    <span>Firebase</span>
-                </div>
-                <div class="tech-item reveal">
-                    <div style="font-size: 3rem;">🟦</div>
-                    <span>TypeScript</span>
-                </div>
-                <div class="tech-item reveal">
-                    <div style="font-size: 3rem;">🟢</div>
-                    <span>Node.js</span>
-                </div>
-                <div class="tech-item reveal">
-                    <div style="font-size: 3rem;">🐍</div>
-                    <span>Python</span>
-                </div>
-                <div class="tech-item reveal">
-                    <div style="font-size: 3rem;">☁️</div>
-                    <span>Cloud APIs</span>
-                </div>
-                <div class="tech-item reveal">
-                    <div style="font-size: 3rem;">🤖</div>
-                    <span>AI/ML</span>
-                </div>
-                <div class="tech-item reveal">
-                    <div style="font-size: 3rem;">🎨</div>
-                    <span>Tailwind</span>
-                </div>
-                <div class="tech-item reveal">
-                    <div style="font-size: 3rem;">📱</div>
-                    <span>React Native</span>
-                </div>
-                <div class="tech-item reveal">
-                    <div style="font-size: 3rem;">🗄️</div>
-                    <span>SQL/NoSQL</span>
-                </div>
-                <div class="tech-item reveal">
-                    <div style="font-size: 3rem;">🔧</div>
-                    <span>REST APIs</span>
-                </div>
+                <div class="tech-item"><span>🍎</span><p>SwiftUI</p></div>
+                <div class="tech-item"><span>⚛️</span><p>React</p></div>
+                <div class="tech-item"><span>🔥</span><p>Firebase</p></div>
+                <div class="tech-item"><span>🟦</span><p>TypeScript</p></div>
+                <div class="tech-item"><span>🟢</span><p>Node.js</p></div>
+                <div class="tech-item"><span>🐍</span><p>Python</p></div>
+                <div class="tech-item"><span>☁️</span><p>Cloud APIs</p></div>
+                <div class="tech-item"><span>🤖</span><p>AI/ML</p></div>
+                <div class="tech-item"><span>🎨</span><p>Tailwind</p></div>
+                <div class="tech-item"><span>📱</span><p>React Native</p></div>
             </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to build something amazing?</h2>
+            <p>Let's turn your ideas into reality. Get in touch and let's discuss your next project.</p>
+            <a href="#contact" class="btn btn-primary">Start Your Project</a>
         </div>
     </section>
 
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Get In Touch</div>
-                <h2>Let's Build Something Amazing</h2>
-                <p>Ready to start your next project? We're here to help turn your ideas into reality.</p>
+                <div class="section-label">Contact</div>
+                <h2>Let's work together</h2>
+                <p>Ready to start your next project? We're here to help.</p>
             </div>
 
-            <div class="contact-content">
-                <div class="cta-group" style="justify-content: center;">
-                    <a href="mailto:cfoskey@thecloudins.com" class="btn btn-primary">Email Us</a>
-                    <a href="tel:+12015007615" class="btn btn-secondary">Schedule Call</a>
+            <div class="contact-cards">
+                <div class="contact-card fade-in">
+                    <div class="contact-card-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:cfoskey@thecloudins.com">cfoskey@thecloudins.com</a>
                 </div>
 
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span>Email</span>
-                        <a href="mailto:cfoskey@thecloudins.com">cfoskey@thecloudins.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <span>Phone</span>
-                        <a href="tel:+12015007615">201-500-7615</a>
-                    </div>
-                    <div class="contact-item">
-                        <span>Location</span>
-                        <a href="#">West Orange, NJ</a>
-                    </div>
+                <div class="contact-card fade-in">
+                    <div class="contact-card-icon">📞</div>
+                    <h3>Phone</h3>
+                    <a href="tel:+12015007615">201-500-7615</a>
+                </div>
+
+                <div class="contact-card fade-in">
+                    <div class="contact-card-icon">📍</div>
+                    <h3>Location</h3>
+                    <a href="#">West Orange, NJ</a>
                 </div>
             </div>
         </div>
@@ -879,31 +863,32 @@
 
     <footer>
         <div class="container">
-            <img src="cloudDesignLogo1.svg" alt="Cloud Design Studio Logo" class="footer-logo">
-            <p>&copy; 2026 Cloud Design Studio, LLC. All rights reserved.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.8rem;">Crafting exceptional digital experiences.</p>
+            <div class="footer-logo">
+                <img src="cloudDesignLogo1.svg" alt="Cloud Design Studio Logo">
+                <span>Cloud Design Studio</span>
+            </div>
+            <p>© 2026 Cloud Design Studio, LLC. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Scroll reveal animation
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealOnScroll = () => {
-            revealElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight * 0.85) {
-                    element.classList.add('active');
-                }
-            });
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Initial check
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-        // Smooth scrolling for navigation links
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
