@@ -284,7 +284,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 2rem;
+            overflow: hidden;
             transition: all 0.3s;
         }
 
@@ -292,6 +292,17 @@
             border-color: var(--primary);
             box-shadow: var(--shadow-xl);
             transform: translateY(-4px);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .service-content {
+            padding: 1.5rem 2rem 2rem;
         }
 
         .service-icon {
@@ -678,75 +689,87 @@
 
             <div class="services-grid">
                 <div class="service-card fade-in">
-                    <div class="service-icon">📱</div>
-                    <h3>Mobile App Development</h3>
-                    <p>Native iOS and cross-platform applications built with modern frameworks.</p>
-                    <ul>
-                        <li>iOS & Android apps</li>
-                        <li>SwiftUI & React Native</li>
-                        <li>Firebase integration</li>
-                        <li>App Store optimization</li>
-                    </ul>
+                    <img src="Mobile_App_Developement.webp" alt="Mobile App Development" class="service-image">
+                    <div class="service-content">
+                        <h3>Mobile App Development</h3>
+                        <p>Native iOS and cross-platform applications built with modern frameworks.</p>
+                        <ul>
+                            <li>iOS & Android apps</li>
+                            <li>SwiftUI & React Native</li>
+                            <li>Firebase integration</li>
+                            <li>App Store optimization</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="service-card fade-in">
-                    <div class="service-icon">💻</div>
-                    <h3>Web Development</h3>
-                    <p>Responsive, SEO-optimized websites that drive results.</p>
-                    <ul>
-                        <li>Custom website design</li>
-                        <li>E-commerce solutions</li>
-                        <li>CMS implementation</li>
-                        <li>Performance tuning</li>
-                    </ul>
+                    <img src="Web_Development.webp" alt="Web Development" class="service-image">
+                    <div class="service-content">
+                        <h3>Web Development</h3>
+                        <p>Responsive, SEO-optimized websites that drive results.</p>
+                        <ul>
+                            <li>Custom website design</li>
+                            <li>E-commerce solutions</li>
+                            <li>CMS implementation</li>
+                            <li>Performance tuning</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="service-card fade-in">
-                    <div class="service-icon">🎨</div>
-                    <h3>UI/UX Design</h3>
-                    <p>Beautiful, intuitive interfaces backed by user research.</p>
-                    <ul>
-                        <li>User research & testing</li>
-                        <li>Wireframing & prototyping</li>
-                        <li>Design systems</li>
-                        <li>Brand identity</li>
-                    </ul>
+                    <img src="UI_UXDesign.webp" alt="UI/UX Design" class="service-image">
+                    <div class="service-content">
+                        <h3>UI/UX Design</h3>
+                        <p>Beautiful, intuitive interfaces backed by user research.</p>
+                        <ul>
+                            <li>User research & testing</li>
+                            <li>Wireframing & prototyping</li>
+                            <li>Design systems</li>
+                            <li>Brand identity</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="service-card fade-in">
-                    <div class="service-icon">🚀</div>
-                    <h3>SaaS Development</h3>
-                    <p>Scalable software platforms with robust backends.</p>
-                    <ul>
-                        <li>Cloud infrastructure</li>
-                        <li>API development</li>
-                        <li>Subscription systems</li>
-                        <li>Analytics dashboards</li>
-                    </ul>
+                    <div class="service-content">
+                        <div class="service-icon">🚀</div>
+                        <h3>SaaS Development</h3>
+                        <p>Scalable software platforms with robust backends.</p>
+                        <ul>
+                            <li>Cloud infrastructure</li>
+                            <li>API development</li>
+                            <li>Subscription systems</li>
+                            <li>Analytics dashboards</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="service-card fade-in">
-                    <div class="service-icon">🤖</div>
-                    <h3>AI Integration</h3>
-                    <p>Enhance your applications with intelligent features.</p>
-                    <ul>
-                        <li>Natural language processing</li>
-                        <li>Computer vision</li>
-                        <li>Chatbots & assistants</li>
-                        <li>Custom AI models</li>
-                    </ul>
+                    <div class="service-content">
+                        <div class="service-icon">🤖</div>
+                        <h3>AI Integration</h3>
+                        <p>Enhance your applications with intelligent features.</p>
+                        <ul>
+                            <li>Natural language processing</li>
+                            <li>Computer vision</li>
+                            <li>Chatbots & assistants</li>
+                            <li>Custom AI models</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="service-card fade-in">
-                    <div class="service-icon">⚙️</div>
-                    <h3>Consulting & Strategy</h3>
-                    <p>Expert guidance on technology and digital transformation.</p>
-                    <ul>
-                        <li>Technical audits</li>
-                        <li>Architecture planning</li>
-                        <li>Product strategy</li>
-                        <li>Code reviews</li>
-                    </ul>
+                    <div class="service-content">
+                        <div class="service-icon">⚙️</div>
+                        <h3>Consulting & Strategy</h3>
+                        <p>Expert guidance on technology and digital transformation.</p>
+                        <ul>
+                            <li>Technical audits</li>
+                            <li>Architecture planning</li>
+                            <li>Product strategy</li>
+                            <li>Code reviews</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
